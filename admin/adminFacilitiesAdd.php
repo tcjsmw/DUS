@@ -5,11 +5,11 @@ include('navFacilitiesAdd.php');
 $sql = "INSERT INTO Xdqrs89_SE2_DUS.facility VALUES (
 '".$_POST['adminFacilitiesAddId']."', 
 '".$_POST['adminFacilitiesAddName']."', 
-'".$_POST['adminFacilitiesAddDescription']."'
-'".$_POST['adminFacilitiesAddPrice']."'
-'".$_POST['adminFacilitiesAddCapacity']."'
-'".$_POST['adminFacilitiesAddEmail']."'
-'".$_POST['adminFacilitiesAddTel']."'
+'".$_POST['adminFacilitiesAddDescription']."', 
+'".$_POST['adminFacilitiesAddPrice']."', 
+'".$_POST['adminFacilitiesAddCapacity']."', 
+'".$_POST['adminFacilitiesAddEmail']."', 
+'".$_POST['adminFacilitiesAddTel']."', 
 '".$_POST['adminFacilitiesAddAddress']."'
 );";
 $pdo->exec($sql);
