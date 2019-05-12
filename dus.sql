@@ -90,7 +90,7 @@ CREATE TABLE `booking_timeslot` (
 
 LOCK TABLES `booking_timeslot` WRITE;
 /*!40000 ALTER TABLE `booking_timeslot` DISABLE KEYS */;
-INSERT INTO `booking_timeslot` VALUES (1,'2019-05-09',13),(2,'2019-05-09',17),(2,'2019-05-10',17);
+INSERT INTO `booking_timeslot` VALUES (1,'2019-05-09',13),(1,'2019-05-11',14),(2,'2019-05-09',17),(2,'2019-05-10',17);
 /*!40000 ALTER TABLE `booking_timeslot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ CREATE TABLE `facility` (
   `contact_tel` text,
   `contact_address` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `facility` (
 
 LOCK TABLES `facility` WRITE;
 /*!40000 ALTER TABLE `facility` DISABLE KEYS */;
-INSERT INTO `facility` VALUES (1,'Athletic Track',NULL,NULL,20,NULL,NULL,NULL);
+INSERT INTO `facility` VALUES (1,'Athletics track',NULL,NULL,20,NULL,NULL,NULL),(2,'Squash courts',NULL,NULL,1,NULL,NULL,NULL),(3,'Aerobics room',NULL,NULL,1,NULL,NULL,NULL),(4,'Tennis',NULL,NULL,1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `facility` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,4 +192,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-09 21:00:52
+-- Dump completed on 2019-05-12 16:38:31
