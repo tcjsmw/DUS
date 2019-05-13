@@ -23,4 +23,10 @@
 		$events = get_all_data($sql);
 		return $events;
 	}
+	
+	function get_bookings_by_userid($id){
+		$sql = "SELECT booking.id AS id, facility.name AS facility, date, slot FROM booking JOIN booking_timeslot AS t ON t.booking_id = booking.id JOIN booking_facility AS f ON f.booking_id = booking.id JOIN facility ON f.facility_id = facility.id JOIN user_booking AS u ON u.booking_id = booking.id JOIN user ON u.user_id = user.id WHERE user.id = ".$id.";";
+		$bookings = get_all_data($sql);
+		return $bookings;
+	}
 ?>

@@ -11,18 +11,20 @@
 		<script src="https://unpkg.com/@fullcalendar/interaction/main.min.js"></script>	
 		<script src="https://unpkg.com/@fullcalendar/daygrid/main.min.js"></script>
 		<script src="https://unpkg.com/@fullcalendar/timegrid/main.min.js"></script>
-		<script src="https://unpkg.com/@fullcalendar/moment/main.min.js"></script>
-		<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
-
+		
 		<script>
 			$(document).ready(function() {
+				$('#arCld').hide();
+				$('#tCld').hide();
+				$('#atCld').hide();
 				//loadCalendar('calendarSC', 'Squash courts');
 				var calendarEl = document.getElementById('calendarSC');
 				var calendar = new FullCalendar.Calendar(calendarEl, {
 				//var calendar = $('#calendar').fullCalendar({
-					plugins: ['moment','interaction','dayGrid','timeGrid'],
+					plugins: ['interaction','dayGrid','timeGrid'],
 					defaultView: 'dayGridMonth',
 					displayEventEnd: true,
+					eventLimit: true,
 					header: {
 						left: 'prev,next today',
 						center: 'title',
@@ -37,7 +39,11 @@
 						startTime: '9:00',
 						endTime: '18:00'
 					}],
-					<?php if (!empty($noSpaceSC)){ print_r($noSpace);?>
+					eventClick: function(info) {
+						alert(info.event.id);
+						window.location.href="";
+					},
+					<?php if (!empty($noSpaceSC)){ ?>
 					events: [
 						<?php 
 							foreach($noSpaceSC as $event){
@@ -45,11 +51,11 @@
 								$start = $event['date']."T".$event['slot'].":00:00";
 								$end = $event['date']."T".$endTime.":00:00";
 								if($event['is_fixed']==1){
-									echo "{ title: '".$event['title']." ".$event['content']."', start: '".$start."', end: '".$end."'},";
+									echo "{ id: '".$event['id']."', title: '".$event['title']."', start: '".$start."', end: '".$end."'},";
 								}else if($event['space']>0){
-									echo "{ title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
+									echo "{ id: '".$event['id']."', title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
 								}else{
-									echo "{ title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
+									echo "{ id: '".$event['id']."', title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
 								}
 							}
 						?>
@@ -61,9 +67,10 @@
 				var calendarEl = document.getElementById('calendarAR');
 				var calendar = new FullCalendar.Calendar(calendarEl, {
 				//var calendar = $('#calendar').fullCalendar({
-					plugins: ['moment','interaction','dayGrid','timeGrid'],
+					plugins: ['interaction','dayGrid','timeGrid'],
 					defaultView: 'dayGridMonth',
 					displayEventEnd: true,
+					eventLimit: true,
 					header: {
 						left: 'prev,next today',
 						center: 'title',
@@ -78,7 +85,11 @@
 						startTime: '9:00',
 						endTime: '18:00'
 					}],
-					<?php if (!empty($noSpaceAR)){ print_r($noSpace);?>
+					eventClick: function(info) {
+						alert(info.event.id);
+						window.location.href="";
+					},
+					<?php if (!empty($noSpaceAR)){ ?>
 					events: [
 						<?php 
 							foreach($noSpaceAR as $event){
@@ -86,11 +97,11 @@
 								$start = $event['date']."T".$event['slot'].":00:00";
 								$end = $event['date']."T".$endTime.":00:00";
 								if($event['is_fixed']==1){
-									echo "{ title: '".$event['title']." ".$event['content']."', start: '".$start."', end: '".$end."'},";
+									echo "{ id: '".$event['id']."', title: '".$event['title']."', start: '".$start."', end: '".$end."'},";
 								}else if($event['space']>0){
-									echo "{ title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
+									echo "{ id: '".$event['id']."', title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
 								}else{
-									echo "{ title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
+									echo "{ id: '".$event['id']."', title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
 								}
 							}
 						?>
@@ -102,9 +113,10 @@
 				var calendarEl = document.getElementById('calendarT');
 				var calendar = new FullCalendar.Calendar(calendarEl, {
 				//var calendar = $('#calendar').fullCalendar({
-					plugins: ['moment','interaction','dayGrid','timeGrid'],
+					plugins: ['interaction','dayGrid','timeGrid'],
 					defaultView: 'dayGridMonth',
 					displayEventEnd: true,
+					eventLimit: true,
 					header: {
 						left: 'prev,next today',
 						center: 'title',
@@ -119,7 +131,11 @@
 						startTime: '9:00',
 						endTime: '18:00'
 					}],
-					<?php if (!empty($noSpaceT)){ print_r($noSpace);?>
+					eventClick: function(info) {
+						alert(info.event.id);
+						window.location.href="";
+					},
+					<?php if (!empty($noSpaceT)){ ?>
 					events: [
 						<?php 
 							foreach($noSpaceT as $event){
@@ -127,11 +143,11 @@
 								$start = $event['date']."T".$event['slot'].":00:00";
 								$end = $event['date']."T".$endTime.":00:00";
 								if($event['is_fixed']==1){
-									echo "{ title: '".$event['title']." ".$event['content']."', start: '".$start."', end: '".$end."'},";
+									echo "{ id: '".$event['id']."', title: '".$event['title']."', start: '".$start."', end: '".$end."'},";
 								}else if($event['space']>0){
-									echo "{ title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
+									echo "{ id: '".$event['id']."', title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
 								}else{
-									echo "{ title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
+									echo "{ id: '".$event['id']."', title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
 								}
 							}
 						?>
@@ -143,9 +159,10 @@
 				var calendarEl = document.getElementById('calendarAT');
 				var calendar = new FullCalendar.Calendar(calendarEl, {
 				//var calendar = $('#calendar').fullCalendar({
-					plugins: ['moment','interaction','dayGrid','timeGrid'],
+					plugins: ['interaction','dayGrid','timeGrid'],
 					defaultView: 'dayGridMonth',
 					displayEventEnd: true,
+					eventLimit: true,
 					header: {
 						left: 'prev,next today',
 						center: 'title',
@@ -160,6 +177,10 @@
 						startTime: '9:00',
 						endTime: '18:00'
 					}],
+					eventClick: function(info) {
+						alert(info.event.id);
+						window.location.href="";
+					},
 					<?php if (!empty($noSpaceAT)){ ?>
 					events: [
 						<?php 
@@ -168,11 +189,11 @@
 								$start = $event['date']."T".$event['slot'].":00:00";
 								$end = $event['date']."T".$endTime.":00:00";
 								if($event['is_fixed']==1){
-									echo "{ title: '".$event['title']." ".$event['content']."', start: '".$start."', end: '".$end."'},";
+									echo "{ id: '".$event['id']."', title: '".$event['title']."', start: '".$start."', end: '".$end."'},";
 								}else if($event['space']>0){
-									echo "{ title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
+									echo "{ id: '".$event['id']."', title: '".$event['space']." space left', start: '".$start."', end: '".$end."', color: 'green'},";
 								}else{
-									echo "{ title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
+									echo "{ id: '".$event['id']."', title: 'Fully booked', start: '".$start."', end: '".$end."', color: 'red'},";
 								}
 							}
 						?>
@@ -180,9 +201,7 @@
 					<?php } ?>
 				});
 				calendar.render();
-				$('#calendarAR').hide();
-				$('#calendarT').hide();
-				$('#calendarAT').hide();
+				
 			});
 		</script>
 		
@@ -197,37 +216,49 @@
 				<button id='t' value='Tennis'>Tennis</button>
 				<button id='at' value='Athletics track'>Athletics track</button>
 			</div>
-			<div id='calendarSC'></div>
-			<div id='calendarAR'></div>
-			<div id='calendarT'></div>
-			<div id='calendarAT'></div>
+			<div id='scCld'>
+				<h1>Squash courts</h1>
+				<div id='calendarSC'></div>
+			</div>
+			<div id='arCld'>
+				<h1>Aerobics room</h1>
+				<div id='calendarAR'></div>
+			</div>
+			<div id='tCld'>
+				<h1>Tennis</h1>
+				<div id='calendarT'></div>
+			</div>
+			<div id='atCld'>
+				<h1>Athletics track</h1>
+				<div id='calendarAT'></div>
+			</div>
 		</div>
 	</body>
 	
 	<script>
 		$('#sc').click(function(event){
-			$('#calendarAR').hide();
-			$('#calendarT').hide();
-			$('#calendarAT').hide();
-			$('#calendarSC').show();
+			$('#arCld').hide();
+			$('#tCld').hide();
+			$('#atCld').hide();
+			$('#scCld').show();
 		});
 		$('#ar').click(function(event){
-			$('#calendarSC').hide();
-			$('#calendarT').hide();
-			$('#calendarAT').hide();
-			$('#calendarAR').show();
+			$('#scCld').hide();
+			$('#tCld').hide();
+			$('#atCld').hide();
+			$('#arCld').show();
 		});
 		$('#t').click(function(event){
-			$('#calendarSC').hide();
-			$('#calendarAR').hide();
-			$('#calendarAT').hide();
-			$('#calendarT').show();
+			$('#scCld').hide();
+			$('#arCld').hide();
+			$('#atCld').hide();
+			$('#tCld').show();
 		});		
 		$('#at').click(function(event){
-			$('#calendarSC').hide();
-			$('#calendarAR').hide();
-			$('#calendarT').hide();
-			$('#calendarAT').show();
+			$('#scCld').hide();
+			$('#arCld').hide();
+			$('#tCld').hide();
+			$('#atCld').show();
 		});
 	</script>
 </html>

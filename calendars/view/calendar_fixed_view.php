@@ -18,6 +18,7 @@
 					plugins: ['interaction','dayGrid','timeGrid'],
 					defaultView: 'dayGridMonth',
 					displayEventEnd: true,
+					eventLimit: true,
 					header: {
 						left: 'prev,next today',
 						center: 'title',
@@ -32,6 +33,10 @@
 						startTime: '9:00',
 						endTime: '18:00'
 					}],
+					eventClick: function(info) {
+						alert(info.event.id);
+						window.location.href="";
+					},
 					<?php if (!empty($fixedEvents)){ ?>
 					events: [
 						<?php 
@@ -39,7 +44,7 @@
 								$endTime = $event['slot']+1;
 								$start = $event['date']."T".$event['slot'].":00:00";
 								$end = $event['date']."T".$endTime.":00:00";
-								echo "{ title: '".$event['title']." ".$event['content']."', start: '".$start."', end: '".$end."'},";
+								echo "{ id: '".$event['id']."', title: '".$event['title']."', start: '".$start."', end: '".$end."'},";
 							}
 						?>
 					]

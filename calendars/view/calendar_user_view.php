@@ -1,6 +1,6 @@
 <html lang="en">
     <head>
-		<title>All bookings</title>
+		<title>Personal bookings</title>
 		
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.css">
 		<link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid/main.min.css">
@@ -28,7 +28,7 @@
 					header: {
 						left: 'prev,next today',
 						center: 'title',
-						right: 'dayGridMonth,timeGridWeek,timeGridDay,listDay'
+						right: 'dayGridMonth,timeGridWeek,timeGridDay,list'
 					},
 					businessHours: [{
 						daysOfWeek: [ 1, 2, 3 ,4 ,5],
@@ -43,24 +43,15 @@
 						alert(info.event.id);
 						window.location.href="";
 					},
-					<?php if (!empty($fixedEvents)||!empty($bookings)){ ?>
+					<?php if (!empty($bookings)){ ?>
 					events: [
-						<?php if(!empty($fixedEvents)){
-							foreach($fixedEvents as $event){
-								$endTime = $event['slot']+1;
-								$start = $event['date']."T".$event['slot'].":00:00";
-								$end = $event['date']."T".$endTime.":00:00";
-								echo "{ id: '".$event['id']."', title: '".$event['title']." ".$event['content']."', start: '".$start."', end: '".$end."'},";
-							}
-						}
-						if(!empty($bookings)){
+						<?php
 							foreach($bookings as $event){
 								$endTime = $event['slot']+1;
 								$start = $event['date']."T".$event['slot'].":00:00";
 								$end = $event['date']."T".$endTime.":00:00";
-								echo "{ id: '".$event['id']."', title: '".$event['facility']." booked by ".$event['user']."', start: '".$start."', end: '".$end."', color: 'green'},";
+								echo "{ id: '".$event['id']."', title: '".$event['facility']."', start: '".$start."', end: '".$end."', color: 'red'},";
 							}
-						}
 						?>
 					],
 					<?php } ?>
