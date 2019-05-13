@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //confirm with database 驗證帳密
     if(!empty($username) && !empty($password)){
         //撈資料庫相同帳號的資料
-        $sql = "SELECT username, password, is_manager FROM user
+        $sql = "SELECT username, password, is_manager, id FROM user
                 WHERE username = :username";
         $statement = $pdo -> prepare($sql);
         $statement -> bindParam(":username", $username, PDO::PARAM_STR);
@@ -35,6 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //比對成功
                 session_start();
                 $_SESSION["username"] = $username;
+                $_SESSION["id"] = $data["id"];
                 $_SESSION["loginStatus"] = 2;
                 // header("location: facilities.php"); //don't know why
                 echo "789";
@@ -45,6 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }elseif(password_verify($password, $dbhashPassword) && $data["is_manager"] == 1){
                 session_start();
                 $_SESSION["username"] = $username;
+                $_SESSION["id"] = $data["id"];
                 $_SESSION["loginStatus"] = 1;
                 // header("location: facilities.php");
                 echo "<script>alert('Successfully logged in!');
