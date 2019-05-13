@@ -23,11 +23,7 @@ $pdo->exec($sql);
     <!-- Functions to alert if a value is null -->
     <script>
         function adminFacilitiesAdd(){
-            if(document.getElementById("adminFacilitiesAddId").value==""){
-                alert("Please enter Facility Id.");
-                return false;
-            }
-            else if(document.getElementById("adminFacilitiesAddName").value==""){
+            if(document.getElementById("adminFacilitiesAddName").value==""){
                 alert("Please enter Facility Name.");
                 return false;
             }
@@ -65,10 +61,6 @@ $pdo->exec($sql);
 <div class = "input">
     <form action="adminFacilitiesAdd.php" method="post" id="adminFacilitiesAdd">
         <p>Please input the information for adding a facility:</p>
-        <p>
-            <label for="adminFacilitiesAddId">Facility Id: </label>
-            <input type="number" name="adminFacilitiesAddId" id="adminFacilitiesAddId"/>
-        </p>
 
         <p>
             <label for="adminFacilitiesAddName">Facility Name: </label>

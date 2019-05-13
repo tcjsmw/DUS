@@ -2,6 +2,8 @@
 session_start();
 include('dbconfig.php');
 include('dbfunction.php');
+include('header.php');
+include('footer.php');
 ?>
 <html>
 <head>
@@ -14,5 +16,7 @@ include('dbfunction.php');
 <div class = "header">
     <h1>Welcome, administrator!</h1>
 </div>
+
+
 </body>
 </html>
