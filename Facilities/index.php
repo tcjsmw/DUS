@@ -1,7 +1,5 @@
 <!doctype html>
-<?php
-include "header_facilities.php"
-?>
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -43,26 +41,7 @@ include "header_facilities.php"
 <a href="https://www.teamdurham.com/about/facilities/durham/contactus/"><img src="images/Contact-Us.jpg" id="contact" alt=""></a></div>
 <div id="wb_queens" style="position:absolute;left:209px;top:685px;width:836px;height:209px;z-index:15;">
 <a href="https://www.teamdurham.com/queenscampus/"><img src="images/Queens-Campus.jpg" id="queens" alt=""></a></div>
-<div id="wb_indexmenu" style="position:absolute;left:4px;top:82px;width:128px;height:98px;z-index:16;">
-<span><a href="https://www.teamdurham.com/events/" class="indexmnu">Events</a></span>
-<span><a href="./maiden.php" class="indexmnu">Maiden Castle</a></span>
-<span><a href="https://www.teamdurham.com/about/facilities/durham/contactus/" class="indexmnu">Contact Us</a></span>
-</div>
-<div id="wb_txtourfacilties" style="position:absolute;left:1px;top:57px;width:148px;height:18px;z-index:17;">
-<span style="color:#000000;font-family:Verdana;font-size:15px;"><strong>Our Facilities</strong></span></div>
-<hr id="Line1" style="position:absolute;left:1px;top:104px;width:180px;height:1px;z-index:18;">
-<hr id="Line2" style="position:absolute;left:1px;top:78px;width:180px;height:1px;z-index:19;">
-<hr id="Line3" style="position:absolute;left:1px;top:125px;width:180px;height:1px;z-index:20;">
-<div id="wb_Breadcrumb1" style="position:absolute;left:627px;top:0px;width:424px;height:28px;z-index:21;vertical-align:top;">
-<ul id="Breadcrumb1">
-<li><a href="http://"><i class="fa fa-user">&nbsp;</i>Member Login</a></li>
-<li><a href="http://"><i class="fa fa-user">&nbsp;</i>Administrator&apos;s Login</a></li>
-<li><a href="http://">User Regisration</a></li>
-</ul>
-</div>
-</div>
+
+
 </body>
 </html>
-<?php
-include "footer.php"
-?>

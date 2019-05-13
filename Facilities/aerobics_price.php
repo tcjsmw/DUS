@@ -15,7 +15,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "Select * from facility where id = 12344570";
+$sql = "Select * from facility where id = 12344572";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -34,26 +34,19 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 ?>
-
 <html>
 <head>
 <meta charset="utf-8">
-<title>Squash Courts</title>
+<title>Aerobics Prices</title>
 <link href="DUSport.css" rel="stylesheet">
-<link href="squash_price.css" rel="stylesheet">
+<link href="aerobics_price.css" rel="stylesheet">
 </head>
 <body>
 <div id="container">
-<div id="wb_txtsquash" style="position:absolute;left:223px;top:0px;width:467px;height:52px;z-index:10;">
-<span style="color:#4F4F4F;font-family:Verdana;font-size:43px;">Squash Courts Prices</span></div>
-<div id="wb_squashpricehr" style="position:absolute;left:235px;top:81px;width:304px;height:32px;z-index:11;">
-<span style="color:#000000;font-family:Arial;font-size:13px;"><br></span><span style="color:#4F4F4F;font-family:Verdana;font-size:13px;">Squash Courts: £<?php echo $FacilityPrice ?> per court, per hour.</span></div>
-
-
+<div id="wb_txtaerohead" style="position:absolute;left:231px;top:0px;width:467px;height:52px;z-index:10;">
+<span style="color:#4F4F4F;font-family:Verdana;font-size:43px;">Aerobics Prices</span></div>
+<div id="wb_txtaerofullpricelist" style="position:absolute;left:231px;top:77px;width:250px;height:600px;z-index:11;">
+<span style="color:#4F4F4F;font-family:Arial;font-size:13px;line-height:24px;"><strong> Aerobics Price per hour  £<?php echo $FacilityPrice ?> </span></div>
 </div>
 </body>
 </html>
-
-
-
-
