@@ -1,9 +1,10 @@
 <?php
 include "header.php";
+include "header2.php";
 include "side.php";
 require "dbconfig.php";
 $username = $password = $confirmPassword = "";
-$usernameError = $passwordError = $confirmPasswordError = "";
+$usernameError = $passwordError = $confirmPasswordError = $emailError ="";
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     //check username 檢查使用者名稱
@@ -62,12 +63,23 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     // check email 檢查email
     $checkEmail="/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
     if(isset($_POST['email']) && $_POST['email']!=""){
-        $email=$_POST['email'];
-        if(!preg_match($checkEmail,$email)){			
-           $emailError = "Invalid format";
+        $tempEmail = $_POST["email"];
+
+        $sql = "SELECT * FROM user WHERE email = :email";
+        $statement = $pdo -> prepare($sql);
+        $statement -> bindParam(":email", $tempEmail, PDO::PARAM_STR); //PARAM_STR: 以字串形式做檢查
+        $statement -> execute();
+
+        if($statement -> rowCount() > 0){
+            $emailError ="This email has been registered.";
         }else{
-            $email = $_POST["email"];
+            if(!preg_match($checkEmail,$tempEmail)){			
+                $emailError = "Invalid format";
+            }else{
+                $email = $tempEmail;
+            }
         }
+        
     }
 
     // membership & question $ answer
@@ -98,6 +110,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         }
         unset($statement);
     }
+    unset($pdo);
 }
 ?>
 
